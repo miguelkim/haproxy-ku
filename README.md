@@ -18,10 +18,8 @@
        export haproxy_version=haproxy-2.0.12
        wget http://www.haproxy.org/download/2.0/src/${haproxy_version}.tar.gz
        ```
-   ```
-       
-       
-   ```
+
+      
 
 2. ##### haproxy 컴파일하기
 
