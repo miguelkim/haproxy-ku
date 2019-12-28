@@ -44,7 +44,7 @@
    3. 폴더이동
    
       ```
-   cd ~/${haproxy_version}
+      cd ~/${haproxy_version}
       ```
 
       
