@@ -58,7 +58,7 @@
       USE_ZLIB=1 \ 
       USE_PCRE=1 \ 
       USE_SYSTEMD=1 \ 
-   EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o";
+      EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o";
       ```
 
       
