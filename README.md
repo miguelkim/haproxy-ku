@@ -141,58 +141,6 @@
    
       
    
-   5. log 폴더 생성
-   
-      ```
-      mkdir /LOG_FOR_HAPROXY
-      ```
-   
-      
-   
-   6. rsyslog 등록
-   
-      ```
-      cat <<EOF > /etc/rsyslog.d/haproxy.conf
-      # Collect log with UDP
-      $ModLoad imudp
-      $UDPServerAddress 127.0.0.1
-      $UDPServerRun 514
-      
-      $template Haproxy, "%msg%\n"
-      
-      # Creating separate log files based on the severity
-      local0.notice -/LOG_FOR_HAPROXY/error.log;Haproxy
-      local0.* -/LOG_FOR_HAPROXY/access.log;Haproxy
-      EOF
-      ```
-   
-      
-   
-   7. logrotate 등록
-   
-      - logrotate.d 안에 파일은 반드시 644 권한이어야 함.
-      - root 소유권으로 log 파일이 생성됨으로 postrotate 에 권한 소유권 명령어를 넣어둠.
-   
-      ```
-      cat <<EOF > /etc/logrotate.d/haproxy
-      /LOG_FOR_HAPROXY/*.log {
-          daily
-          rotate 30
-          missingok
-          notifempty
-          nocompress
-          sharedscripts
-          postrotate
-              /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
-      	/usr/bin/chown haproxy:haproxy /LOG_FOR_HAPROXY/*.log
-          endscript
-      }
-      EOF
-      chmod 644 /etc/logrotate.d/haproxy;
-      ```
-   
-      
-   
    8. systemd 등록
    
       ```
@@ -242,5 +190,67 @@
    
        
    
-   11. config 설정
+   8. config 설정
+   
+      
+   
+4. #####  로그 관리 ( OPTIONS )
+
+   - Docker image 제작 or Logstash 로 로그 전송시에는 아래 내용을 진행하지 않아도 됨.
+
+     
+
+   1. log 폴더 생성
+
+      ```
+      mkdir /LOG_FOR_HAPROXY
+      ```
+
+      
+
+   2. rsyslog 등록
+
+      ```
+      cat <<EOF > /etc/rsyslog.d/haproxy.conf
+      # Collect log with UDP
+      $ModLoad imudp
+      $UDPServerAddress 127.0.0.1
+      $UDPServerRun 514
+      
+      $template Haproxy, "%msg%\n"
+      
+      # Creating separate log files based on the severity
+      local0.notice -/LOG_FOR_HAPROXY/error.log;Haproxy
+      local0.* -/LOG_FOR_HAPROXY/access.log;Haproxy
+      EOF
+      ```
+
+      
+
+   3. logrotate 등록
+
+      - logrotate.d 안에 파일은 반드시 644 권한이어야 함.
+      - root 소유권으로 log 파일이 생성됨으로 postrotate 에 권한 소유권 명령어를 넣어둠.
+
+      ```
+      cat <<EOF > /etc/logrotate.d/haproxy
+      /LOG_FOR_HAPROXY/*.log {
+          daily
+          rotate 30
+          missingok
+          notifempty
+          nocompress
+          sharedscripts
+          postrotate
+              /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+      	/usr/bin/chown haproxy:haproxy /LOG_FOR_HAPROXY/*.log
+          endscript
+      }
+      EOF
+      chmod 644 /etc/logrotate.d/haproxy;
+      ```
+
+      
+
+
 
