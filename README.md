@@ -214,7 +214,7 @@
       
       [Install]
       WantedBy=multi-user.target
-      }
+      
       EOF
       
       systemctl daemon-reload;
@@ -236,7 +236,7 @@
    
        ```
        chmod +w /etc/sudoers;
-       echo -e "\nhaproxy      ALL=(ALL)       NOPASSWD: systemctl stop haproxy,systemctl start haproxy, systemctl restart haproxy, systemctl reload haproxy">> /etc/sudoers;
+       echo -e "\nhaproxy      ALL=(ALL)       NOPASSWD: systemctl stop haproxy, systemctl start haproxy, systemctl restart haproxy, systemctl reload haproxy">> /etc/sudoers;
        chmod -w /etc/sudoers;
        ```
    
