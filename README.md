@@ -27,8 +27,8 @@
 
       ```
       yum install \ 
-      gcc openssl-devel readline-devel systemd-devel make pcre-devel openssl socat nmap
-   
+      gcc openssl-devel readline-devel systemd-devel make pcre-devel \ 
+      openssl socat nmap
       ```
 
       
@@ -36,7 +36,7 @@
    2. 압축풀기
    
       ```
-   tar -zxf ${haproxy_version}.tar.gz
+      tar -zxf ${haproxy_version}.tar.gz
       ```
 
       
@@ -130,13 +130,13 @@
       - 타 계정 값에 영향을 줄 수 있으므로 주의.
 
       ```
-   cat <<EOF > /etc/security/limits.d/haproxy.conf
+      cat <<EOF > /etc/security/limits.d/haproxy.conf
       *        soft    nofile    65536
-   *        hard    nofile    65536
+      *        hard    nofile    65536
       *        soft    nproc     60000
-   *        hard    nproc     100000
+      *        hard    nproc     100000
       root     soft    nproc     unlimited
-   EOF
+      EOF
       ```
    
       
