@@ -1,4 +1,4 @@
-### Centos7 Haproxy 컴파일 및 설정하기
+## Centos7 Haproxy 컴파일 및 설정하기
 
 ###### 2019/12/28. by Miguel.
 
@@ -8,7 +8,7 @@
   
   
 
-1. #####  haproxy 다운받기
+1. ###  haproxy 다운받기
 
    * http://www.haproxy.org/
 
@@ -21,7 +21,7 @@
 
       
 
-2. ##### haproxy 컴파일하기
+2. ### haproxy 컴파일하기
 
    1. 디펜던시 설치하기
 
@@ -94,7 +94,7 @@
           : status 내용을 프로메테우스 형식으로 출력
           
    
-3. #####  설치하기
+3. ###  설치하기
 
    1. 관리 폴더 생성
 
@@ -180,21 +180,21 @@
    
       
    
-   10. sudo 권한 부여 ( haproxy 계정 )
+   7. sudo 권한 부여 ( haproxy 계정 )
    
-       ```
-       chmod +w /etc/sudoers;
-       echo -e "\nhaproxy      ALL=(ALL)       NOPASSWD: systemctl stop haproxy, systemctl start haproxy, systemctl restart haproxy, systemctl reload haproxy">> /etc/sudoers;
-       chmod -w /etc/sudoers;
-       ```
-   
-       
-   
-   8. config 설정
+      ```
+      chmod +w /etc/sudoers;
+      echo -e "\nhaproxy      ALL=(ALL)       NOPASSWD: systemctl stop haproxy, systemctl start haproxy, systemctl restart haproxy, systemctl reload haproxy">> /etc/sudoers;
+      chmod -w /etc/sudoers;
+      ```
    
       
    
-4. #####  로그 관리 ( OPTIONS )
+      
+   
+      
+   
+4. ###  로그 관리 ( OPTIONS )
 
    - Docker image 제작 or Logstash 로 로그 전송시에는 아래 내용을 진행하지 않아도 됨.
 
@@ -250,7 +250,5 @@
       chmod 644 /etc/logrotate.d/haproxy;
       ```
 
-      
-
-
+5. ###  Config 설정
 
