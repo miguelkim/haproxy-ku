@@ -27,7 +27,7 @@
 
       ```
       yum install \ 
-      gcc openssl-devel readline-devel systemd-devel make pcre-devel \
+      gcc openssl-devel readline-devel systemd-devel make pcre-devel \ 
    openssl socat nmap
       ```
 
@@ -107,11 +107,11 @@
    2. 서브 폴더 생성
 
       ```
-      mkdir -p \
-      /haproxy/config \
-      /haproxy/errorfiles \
-      /haproxy/pid \
-      /haproxy/run \
+      mkdir -p \ 
+      /haproxy/config \ 
+      /haproxy/errorfiles \ 
+      /haproxy/pid \ 
+      /haproxy/run \ 
       /haproxy/sbin
       ```
 
