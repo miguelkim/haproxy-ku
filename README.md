@@ -46,6 +46,18 @@
 
    4. 컴파일하기
 
+      ```
+      make -j $(nproc) \
+      TARGET=linux-glibc \ 
+      USE_OPENSSL=1 \ 
+      USE_ZLIB=1 \ 
+      USE_PCRE=1 \ 
+      USE_SYSTEMD=1 \ 
+      EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o";
+      ```
+
+      
+
       - 옵션설명
 
         - TARGET=linux-glibc
@@ -71,16 +83,3 @@
         - EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
 
           : status 내용을 프로메테우스 형식으로 출력
-
-      ```
-      make -j $(nproc) \
-      TARGET=linux-glibc \ 
-      USE_OPENSSL=1 \ 
-      USE_ZLIB=1 \ 
-      USE_PCRE=1 \ 
-      USE_SYSTEMD=1 \ 
-      EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o";
-      ```
-
-      
-
