@@ -27,8 +27,8 @@
 
       ```
       yum install \ 
-      gcc openssl-devel readline-devel systemd-devel make pcre-devel \ 
-   openssl socat nmap
+      gcc openssl-devel readline-devel systemd-devel make pcre-devel openssl socat nmap
+   
       ```
 
       
